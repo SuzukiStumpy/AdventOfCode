@@ -1,6 +1,7 @@
-# AdventOfCode2021
+# Advent Of Code
 
-The files in the src directory are my JavaScript solutions to the puzzles posed each day.
+The files are stored in folders corresponding to the year of the challenge.  They're named after the day and the puzzle number for that day (ie: _1 is puzzle 1 and _2 is puzzle 2).
+
 Each one of them is designed to execute directly in the browser developer console with the
 input data file loaded as the main page.
 

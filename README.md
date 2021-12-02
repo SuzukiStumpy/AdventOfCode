@@ -1,4 +1,4 @@
-# Advent Of Code
+# [Advent Of Code](https://adventofcode.com)
 
 The files are stored in folders corresponding to the year of the challenge.  They're named after the day and the puzzle number for that day (ie: _1 is puzzle 1 and _2 is puzzle 2).
 

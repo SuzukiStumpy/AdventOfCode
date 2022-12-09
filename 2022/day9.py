@@ -4,10 +4,10 @@ data = [line.strip() for line in open('inputs/day9.txt', 'r')]
 class Rope:
     def __init__(self, length: int) -> None:
         self.knots = []
-        for _ in range(length + 1):
+        for _ in range(length):
             self.knots.append({'x': 0, 'y': 0})
         self.visited = set()
-        self.visited.add(tuple(list(self.knots[length].values())))
+        self.visited.add(tuple(list(self.knots[length-1].values())))
 
     def process(self, motion: [str]) -> int:
         for line in motion:
@@ -54,6 +54,6 @@ class Rope:
         return (abs(self.knots[head]['x'] - self.knots[tail]['x']) == 1) and (abs(self.knots[head]['y'] - self.knots[tail]['y']) == 1)
 
 
-print(f"Part 1: {Rope(1).process(data)}")
-print(f"Part 2: {Rope(9).process(data)}")
+print(f"Part 1: {Rope(2).process(data)}")
+print(f"Part 2: {Rope(10).process(data)}")
 

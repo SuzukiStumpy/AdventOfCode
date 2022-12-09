@@ -23,11 +23,12 @@ class Rope:
                 self.knots[0]['y'] -= int(distance)
 
             # check tail and move
-            for i in range(1, len(self.knots)):
-                while self.manhattan(i-1, i) > 1 and not self.touching(i-1, i):
-                    self.follow(i-1, i)
-                    if i == len(self.knots) - 1:
-                        self.visited.add(tuple(list(self.knots[i].values())))
+            for _ in range(int(distance)):
+                for i in range(1, len(self.knots)):
+                    if not self.touching(i-1, i):
+                        self.follow(i-1, i)
+                        if i == len(self.knots) - 1:
+                            self.visited.add(tuple(list(self.knots[i].values())))
 
         return len(self.visited)
 
@@ -45,13 +46,9 @@ class Rope:
         if self.knots[head]['y'] < self.knots[tail]['y']:
             self.knots[tail]['y'] -= 1
 
-    def manhattan(self, head: int, tail: int) -> int:
-        """Return the manhattan distance between the head and the tail"""
-        return abs(self.knots[head]['x'] - self.knots[tail]['x']) + abs(self.knots[head]['y'] - self.knots[tail]['y'])
-
     def touching(self, head: int, tail: int) -> bool:
         """Returns true if the head and tail knots are in contact with one another"""
-        return (abs(self.knots[head]['x'] - self.knots[tail]['x']) == 1) and (abs(self.knots[head]['y'] - self.knots[tail]['y']) == 1)
+        return (abs(self.knots[head]['x'] - self.knots[tail]['x']) <= 1) and (abs(self.knots[head]['y'] - self.knots[tail]['y']) <= 1)
 
 
 print(f"Part 1: {Rope(2).process(data)}")

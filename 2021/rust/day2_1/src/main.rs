@@ -2,12 +2,17 @@ use std::env;
 use std::fs::File;
 use std::io::{BufRead, BufReader};
 
-fn load_from_file(file_path :&String) -> Vec<String> {
+struct Command(&str, i32);
+
+fn load_from_file(file_path :&String) -> Vec<Command> {
     let f = File::open(file_path).expect("File not found");
     let r = BufReader::new(f);
 
     r.lines()
-        .map(|line| line.unwrap() )
+        .map(|line| {
+            let l2 = line.unwrap().split(' '); 
+            Command(l2.next().unwrap(), l2.next().unwrap().parse::<i32>().unwrap())
+        })
         .collect()
 }
 

@@ -26,7 +26,7 @@ def search(row: int, col: int, dx: int, dy: int, find_idx: int) -> bool:
        found
     """
     search_string = 'XMAS'
-    
+
     if row + dx < 0 or row + dx >= len(data[row]):
         return False
     if col + dy < 0 or col + dy >= len(data):
@@ -52,3 +52,27 @@ for row in range(0, len(data)):
 print (f'Part 1: XMAS appears {word_count} times.')
 
 # Part 2
+word_count = 0
+
+def is_x_mas(row: int, col: int) -> bool:
+    """If the current row/col is the center of an
+       X-MAS, then returns true, else false
+    """
+    points = [(-1, 1), (1, 1), (-1, -1), (1, -1)]
+    found = 0
+
+    for (x, y) in points:
+        if data[row + x][col + y] == 'M' and data[row - x][col -y] == 'S':
+            found += 1
+
+    return found == 2
+
+
+# truncate ranges because middle of an X-MAS cannot, by definition be at the start
+# or end of the dataset or individual line...
+for row in range(1, len(data) - 1):
+    for col in range(1, len(data[row]) - 1):
+        if data[row][col] == 'A':
+            word_count += 1 if is_x_mas(row, col) is True else 0
+
+print (f'Part 2: There are {word_count} X-MASses in the grid.')

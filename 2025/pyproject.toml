@@ -1,0 +1,17 @@
+[project]
+name = "Advent-of-Code-2025"
+version = "0.1.0"
+description = "Code for Advent of Code 2025"
+readme = "README.md"
+requires-python = ">=3.13"
+dependencies = []
+
+[project.scripts]
+advent-of-code = "advent_of_code_2025.main:main"
+
+[tool.pyrefly]
+source-roots = ["src"]
+
+[build-system]
+requires = ["uv_build>=0.9.13,<0.10.0"]
+build-backend = "uv_build"
